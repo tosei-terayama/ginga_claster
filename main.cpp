@@ -13,7 +13,7 @@ const double M( 1.99e30 );
 const double GM( 4.0*M_PI*M_PI );
 
 const double Max_Time( 10.0 );
-const double Dt( 0.0001 );
+const double Dt( 0.0002 );
 const int ite( Max_Time/Dt );
 const double Dv( 0.01 );
 
