@@ -21,22 +21,20 @@ void middle_point( double **mid_vxy, double **mid_axy, planet *Star )
 
         mid_ri = abs( mid_xi, mid_yi );
 
-        for( int j = 0; j < Num_Star; j++ ){
+        for( int j = i  + 1; j < Num_Star; j++ ){
 
-            if( i != j){
-                mid_xj = Star[j].x() + Star[j].vx()*Dt/2.0;
-                mid_yj = Star[j].y() + Star[j].vy()*Dt/2.0;
+            mid_xj = Star[j].x() + Star[j].vx()*Dt/2.0;
+            mid_yj = Star[j].y() + Star[j].vy()*Dt/2.0;
 
-                mid_rij = abs( mid_xi - mid_xj, mid_yi - mid_yj );
+            mid_rij = abs( mid_xi - mid_xj, mid_yi - mid_yj );
 
-                // a x component //
-                mid_ax += -( GM/std::pow( mid_ri, 3.0 ))*mid_xi
-                        - ( GM/std::pow( mid_rij, 3.0 ))*( mid_xi - mid_xj );
+            // a x component //
+            mid_ax += -( GM/std::pow( mid_ri, 3.0 ))*mid_xi
+                    - ( GM/std::pow( mid_rij, 3.0 ))*( mid_xi - mid_xj );
                 
-                // a y component //
-                mid_ay += -( GM/std::pow( mid_ri, 3.0 ))*mid_yi
-                        - ( GM/std::pow( mid_rij, 3.0 ))*( mid_yi - mid_yj );
-            }
+            // a y component //
+            mid_ay += -( GM/std::pow( mid_ri, 3.0 ))*mid_yi
+                    - ( GM/std::pow( mid_rij, 3.0 ))*( mid_yi - mid_yj );
 
         }
 
